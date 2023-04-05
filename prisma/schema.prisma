@@ -1,0 +1,60 @@
+// This is Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+} 
+
+model Houses {
+  id String  @id
+  imageUrl String
+  title String
+  houseNumber Int
+  streetName String
+  postalCode Int
+  city String
+  country String
+  lat Float
+  lng Float
+  owner String
+  price Float
+  size Float
+  heating Boolean
+  cooling Boolean
+  rooms Int
+  caution Float
+  supermarktDistance Float
+  busStationDistance Float
+  maxResident Int
+  furnished Boolean
+  parking Boolean
+}
+
+model Seekers {
+  id String @default(cuid()) @id
+  name String
+  profession String
+  age Int
+  nationality String
+  language String
+  howMuchWannaSpend Float
+  hobby String
+  pet Boolean
+  allergie Boolean
+  monthsOfStay Int
+  smoker Boolean
+}
+
+model Signup {
+  id String @default(cuid()) @id
+  firstName String
+  lastName String
+  email String @unique
+  password String
+  
+}

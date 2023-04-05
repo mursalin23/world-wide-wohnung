@@ -1,0 +1,11 @@
+.my-link {
+  color: orange;
+  text-decoration: underline;
+}
+
+.nav-style {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
