@@ -4,6 +4,7 @@
 //const PlotlyComponent = createPlotlyComponent(Plotly);
 import dynamic from "next/dynamic";
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false, })
+import { Table, Image, Row } from 'react-bootstrap';
 
 const Compare = ({ house1, house2 }) => {
 	console.log(house1)
@@ -54,24 +55,25 @@ const Compare = ({ house1, house2 }) => {
 
 	return (
 		<>
-			<table>
+			<Table striped bordered hover>
 				<tbody>
 					<tr>
 						<td>
-							<img src={house1.imageUrl} alt="" width={400} height={400} />
+							<Image src={house1.imageUrl} alt={house1.title} width={400} height={400} />
 						</td>
 						<td>
-							<img src={house2.imageUrl} alt="" width={400} height={400} />
+							<Image src={house2.imageUrl} alt={house2.title} width={400} height={400} />
 						</td>
 					</tr>
 				</tbody>
-			</table>
-			<Plot
-				data={data}
-				layout={{ height: 500, title: "Compare Result" }} />
+			</Table>
+			<Row>
+				<Plot data={data} layout={{ height: 500, title: 'Compare Result' }} />
+			</Row>
 		</>
 	);
-}
+};
+
 
 export default Compare;
 

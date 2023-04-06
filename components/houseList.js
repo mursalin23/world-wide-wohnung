@@ -1,5 +1,6 @@
 import Compare from "@/pages/compare";
 import { useState, useEffect } from "react";
+import { Table, Button } from 'react-bootstrap';
 
 
 const HouseList = ({ fetchUrl }) => {
@@ -38,7 +39,13 @@ const HouseList = ({ fetchUrl }) => {
 		return (
 			<>
 				<h1>Houses near your search location</h1>
-				<table>
+				<Table striped bordered hover>
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Select to Compare</th>
+						</tr>
+					</thead>
 					<tbody>
 						{houses.map((house) => (
 							<tr key={house.id}>
@@ -48,14 +55,14 @@ const HouseList = ({ fetchUrl }) => {
 									</a>
 								</td>
 								<td>
-									<button onClick={() => setCompareList([...compareList, house.id])} >select to compare</button>
+									<Button onClick={() => setCompareList([...compareList, house.id])} >select to compare</Button>
 								</td>
 							</tr>
 						))}
 					</tbody>
-				</table>
+				</Table>
 				
-				{compareList.length > 1 && <><button onClick={()=> window.open(`/compare?id1=${compareList[0]}&id2=${compareList[1]}", "_blank`)} >Compare</button></>}
+				{compareList.length > 1 && <Button onClick={()=> window.open(`/compare?id1=${compareList[0]}&id2=${compareList[1]}", "_blank`)} >Compare</Button>}
 			</>
 		);
 	}
